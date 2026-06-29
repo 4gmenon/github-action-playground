@@ -1,1 +1,16 @@
+name: Generate Code
 
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate File
+        run: |
+          echo "Hello World" > hello.txt
+
+      - name: Display File
+        run: cat hello.txt
