@@ -1,0 +1,14 @@
+name: ok-ko
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Simulate Result
+        run: |
+          echo "OK"
+          exit 0
