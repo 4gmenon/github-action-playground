@@ -19,9 +19,9 @@ jobs:
             echo 'print("Hello from Python")' > app.py
             cat app.py
 
-          elif [ "${{ inputs.language }}" = "javascript" ]; then
-            echo 'console.log("Hello from JavaScript");' > app.js
-            cat app.js
+          elif [ "${{ inputs.language }}" = "java" ]; then
+            echo 'System.out.print("Hello from Java");' > app.java
+            cat app.java
 
           else
             echo "Unsupported language"
