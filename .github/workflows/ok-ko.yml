@@ -8,7 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Simulate Result
+      - name: Check Output
         run: |
-          echo "OK"
+          RESULT="OK"
+
+          if [ "$RESULT" != "OK" ]; then
+            echo "ERROR: Result is not OK"
+            exit 1
+          fi
+
           exit 0
