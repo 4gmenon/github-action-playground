@@ -1,0 +1,29 @@
+name: Generate Code From Input
+
+on:
+  workflow_dispatch:
+    inputs:
+      language:
+        description: "Choose a language"
+        required: true
+        default: "python"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate Code
+        run: |
+          if [ "${{ inputs.language }}" = "python" ]; then
+            echo 'print("Hello from Python")' > app.py
+            cat app.py
+
+          elif [ "${{ inputs.language }}" = "javascript" ]; then
+            echo 'console.log("Hello from JavaScript");' > app.js
+            cat app.js
+
+          else
+            echo "Unsupported language"
+            exit 1
+          fi
