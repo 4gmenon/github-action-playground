@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Check Output
         run: |
-          RESULT="OK"
+          RESULT="KO"
 
           if [ "$RESULT" != "OK" ]; then
             echo "ERROR: Result is not OK"
