@@ -1,18 +1,21 @@
-name: ok-ko
+name: Input Demo
 
 on:
   workflow_dispatch:
+    inputs:
+      result:
+        description: "Enter OK or KO"
+        required: true
+        default: "OK"
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check Output
+      - name: Check Input
         run: |
-          RESULT="KO"
-
-          if [ "$RESULT" != "OK" ]; then
+          if [ "${{ inputs.result }}" != "OK" ]; then
             echo "ERROR: Result is not OK"
             exit 1
           fi
