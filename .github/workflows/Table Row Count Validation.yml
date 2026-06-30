@@ -1,4 +1,4 @@
-name: GenerateSQL
+name: Table Row Count Validation
 
 on:
   workflow_dispatch:
