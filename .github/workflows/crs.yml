@@ -39,22 +39,22 @@ jobs:
         echo "FROM ${{ github.event.inputs.table2 }}"
         echo "UNION ALL"
         echo "SELECT COUNT(*),"
-        if: ${{ github.event.inputs.table3 != '' }}; THEN
+        if: f [ -n "${{ inputs.table3 }}" ]; then
           echo "'2' TABLE_ORDER"
           echo "FROM ${{ github.event.inputs.table3 }}"
           echo "UNION ALL"
         fi
-        if: ${{ github.event.inputs.table4 != '' }}; THEN
+        if: f [ -n "${{ inputs.table4 }}" ]; then
           echo "'3' TABLE_ORDER"
           echo "FROM ${{ github.event.inputs.table4 }}"
           echo "UNION ALL"
         fi
-        if: ${{ github.event.inputs.table5 != '' }}; THEN
+        if: f [ -n "${{ inputs.table5 }}" ]; then
           echo "'4' TABLE_ORDER"
           echo "FROM ${{ github.event.inputs.table5 }}"
           echo "UNION ALL"
         fi
-        if: ${{ github.event.inputs.table6 != '' }}; THEN
+        if: f [ -n "${{ inputs.table6 }}" ]; then
           echo "'5' TABLE_ORDER"
           echo "FROM ${{ github.event.inputs.table6 }}"
           echo "UNION ALL"
