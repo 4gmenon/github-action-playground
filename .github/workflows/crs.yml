@@ -1,0 +1,59 @@
+name: crs
+
+on:
+  workflow_dispatch:
+    inputs:
+      table1:
+        description: "First table"
+        required: true
+      table2:
+        description: "Second table"
+        required: true
+      table3:
+        description: "Third table"
+        required: false
+      table4:
+        description: "fourth table"
+        required: false
+      table5:
+        description: "fifth table"
+        required: false
+      table6:
+        description: "sixth table"
+        required: false
+
+jobs: 
+  generate:
+    runs-on: ubuntu-latest
+
+    
+    steps:
+    - name: Make SQl Query
+      run: |
+        echo "SELECT COUNT(*) COUNT_ROWS," 
+        echo "'0' TABLE_ORDER"
+        echo "FROM ${{ github.event.inputs.table1 }}"
+        echo "UNION ALL"
+        echo "SELECT COUNT(*),"
+        echo "'1' TABLE_ORDER"
+        echo "FROM ${{ github.event.inputs.table2 }}"
+        echo "UNION ALL"
+        echo "SELECT COUNT(*),"
+        echo "'2' TABLE_ORDER"
+        echo "FROM ${{ github.event.inputs.table3 }}"
+        echo "UNION ALL"
+        echo "SELECT COUNT(*),"
+        echo "'3' TABLE_ORDER"
+        echo "FROM ${{ github.event.inputs.table4 }}"
+        echo "UNION ALL"
+        echo "SELECT COUNT(*),"
+        echo "'4' TABLE_ORDER"
+        echo "FROM ${{ github.event.inputs.table5 }}"
+        echo "UNION ALL"
+        echo "SELECT COUNT(*),"
+        echo "'5' TABLE_ORDER"
+        echo "FROM ${{ github.event.inputs.table6 }}"
+        echo "UNION ALL"
+      
+
+      
