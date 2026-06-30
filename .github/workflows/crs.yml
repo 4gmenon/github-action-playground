@@ -39,21 +39,27 @@ jobs:
         echo "FROM ${{ github.event.inputs.table2 }}"
         echo "UNION ALL"
         echo "SELECT COUNT(*),"
-        echo "'2' TABLE_ORDER"
-        echo "FROM ${{ github.event.inputs.table3 }}"
-        echo "UNION ALL"
-        echo "SELECT COUNT(*),"
-        echo "'3' TABLE_ORDER"
-        echo "FROM ${{ github.event.inputs.table4 }}"
-        echo "UNION ALL"
-        echo "SELECT COUNT(*),"
-        echo "'4' TABLE_ORDER"
-        echo "FROM ${{ github.event.inputs.table5 }}"
-        echo "UNION ALL"
-        echo "SELECT COUNT(*),"
-        echo "'5' TABLE_ORDER"
-        echo "FROM ${{ github.event.inputs.table6 }}"
-        echo "UNION ALL"
+        if: ${{ github.event.inputs.table3 != '' }}; THEN
+          echo "'2' TABLE_ORDER"
+          echo "FROM ${{ github.event.inputs.table3 }}"
+          echo "UNION ALL"
+        fi
+        if: ${{ github.event.inputs.table4 != '' }}; THEN
+          echo "'3' TABLE_ORDER"
+          echo "FROM ${{ github.event.inputs.table4 }}"
+          echo "UNION ALL"
+        fi
+        if: ${{ github.event.inputs.table5 != '' }}; THEN
+          echo "'4' TABLE_ORDER"
+          echo "FROM ${{ github.event.inputs.table5 }}"
+          echo "UNION ALL"
+        fi
+        if: ${{ github.event.inputs.table6 != '' }}; THEN
+          echo "'5' TABLE_ORDER"
+          echo "FROM ${{ github.event.inputs.table6 }}"
+          echo "UNION ALL"
+        fi
+        
       
 
       
