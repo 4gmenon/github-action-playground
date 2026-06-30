@@ -20,17 +20,21 @@ jobs:
     
     steps:
     - name: Make SQl Query
-    run:
-      echo: "WITH T1 AS ("
-      echo: "SELECT COUNT(*) COUNT_ROWS FROM ${{ github.event.inputs.table1 }}"
-      echo: "),"
-      echo: "WITH T2 AS ("
-      echo: "SELECT COUNT(*) COUNT_ROWS FROM ${{ github.event.inputs.table2 }}"
-      echo: "),"
-       echo: "WITH T3 AS ("
-      echo: "SELECT COUNT(*) COUNT_ROWS FROM ${{ github.event.inputs.table3 }}"
-      echo: "),"
-      echo: "SELECT *"
-      echo: "FROM T1, T2, T3"
-      echo: "WHERE NOT(T1.COUNT_ROWS = T2.COUNT_ROWS AND T1.COUNT_ROWS ="
-      echo: "T3.COUNT_ROWS)"
+      run: |
+        echo: "WITH T1 AS ("
+        echo: "SELECT COUNT(*) COUNT_ROWS FROM ${{ github.event.inputs.table1 }}"
+        echo: "),"
+        echo: "WITH T2 AS ("
+        echo: "SELECT COUNT(*) COUNT_ROWS FROM ${{ github.event.inputs.table2 }}"
+        echo: "),"
+        echo: "WITH T3 AS ("
+        echo: "SELECT COUNT(*) COUNT_ROWS FROM ${{ github.event.inputs.table3 }}"
+        echo: "),"
+        echo: "SELECT *"
+        echo: "FROM T1, T2, T3"
+        echo: "WHERE NOT(T1.COUNT_ROWS = T2.COUNT_ROWS AND T1.COUNT_ROWS ="
+        echo: "T3.COUNT_ROWS)"
+
+      
+
+      
