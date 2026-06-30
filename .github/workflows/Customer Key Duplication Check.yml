@@ -1,0 +1,33 @@
+name: Customer Key Duplication Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      column_name:
+        description: "Name of Key Column"
+        required: true
+      table_name:
+        description: "Name of Table"
+        required: true
+     
+jobs: 
+  generate:
+    runs-on: ubuntu-latest
+
+    
+    steps:
+    - name: Make SQl Query
+      run: |
+        echo "SELECT COUNT (*) AS cnt"
+        echo "FROM ("
+        echo "  SELECT ${{ github.event.inputs.column_name }}"
+        echo "  FROM ${{ github.event.inputs.table_name }}"
+        echo "  GROUP BY ${{ github.event.inputs.column_name }}"
+        echo "  HAVING COUNT (*) > 1"
+        echo ")"
+        echo "HAVING cnt > 0;"
+        
+
+      
+
+      
