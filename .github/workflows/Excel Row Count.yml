@@ -12,6 +12,12 @@ on:
       column_name:
         description: "Column name"
         required: true
+      column_name2:
+        description: "Column name"
+        required: true
+      column_name3:
+        description: "Column name"
+        required: true
 
 jobs:
   validate:
@@ -35,8 +41,8 @@ jobs:
           file = "${{ github.event.inputs.excel_file }}"
           sheet = "${{ github.event.inputs.sheet_name }}"
           column1 = "${{ github.event.inputs.column_name }}"
-          column2 = "${{ github.event.inputs.column_name }}"
-          column3 = "${{ github.event.inputs.column_name }}"
+          column2 = "${{ github.event.inputs.column_name2 }}"
+          column3 = "${{ github.event.inputs.column_name3 }}"
           
           
 
