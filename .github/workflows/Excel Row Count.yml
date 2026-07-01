@@ -1,0 +1,44 @@
+name: Excel Row Count
+
+on:
+  workflow_dispatch:
+    inputs:
+      excel_file:
+        description: "Excel file"
+        required: true
+      sheet_name:
+        description: "Sheet name"
+        required: true
+      column_name:
+        description: "Column name"
+        required: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install packages
+        run: pip install pandas openpyxl
+
+      - name: Count rows
+        run: |
+          python <<EOF
+          import pandas as pd
+
+          file = "${{ github.event.inputs.excel_file }}"
+          sheet = "${{ github.event.inputs.sheet_name }}"
+          col = "${{ github.event.inputs.column_name }}"
+
+          df = pd.read_excel(file, sheet_name=sheet)
+
+          count = df[col].count()
+
+          print(f"Row Count = {count}")
+          EOF
