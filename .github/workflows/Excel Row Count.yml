@@ -34,11 +34,26 @@ jobs:
 
           file = "${{ github.event.inputs.excel_file }}"
           sheet = "${{ github.event.inputs.sheet_name }}"
-          col = "${{ github.event.inputs.column_name }}"
+          column1 = "${{ github.event.inputs.column_name }}"
+          column2 = "${{ github.event.inputs.column_name }}"
+          column3 = "${{ github.event.inputs.column_name }}"
+          
+          
 
           df = pd.read_excel(file, sheet_name=sheet)
 
-          count = df[col].count()
+          count1 = df[column1].count()
+          count2 = df[column2].count()
+          count3 = df[column3].count()
 
-          print(f"Row Count = {count}")
+         
+          print(f"Count1={count1}")
+          print(f"Count2={count2}")
+          print(f"Count3={count3}")
+      
+          if count1 == count2 == count3:
+              print("OK - Counts match")
+          else:
+              print("KO - Counts do not match")
+              raise SystemExit(1)
           EOF
