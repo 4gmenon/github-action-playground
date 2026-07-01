@@ -1,0 +1,29 @@
+name: Count Table Rows from File
+
+on:
+  workflow_dispatch
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read counts
+        working-directory: ${{ github.workspace }}
+        run: |
+          COUNT1=$(sed -n '1p' counts.txt)
+          COUNT2=$(sed -n '2p' counts.txt)
+          COUNT3=$(sed -n '3p' counts.txt)
+
+          echo "Count1=$COUNT1"
+          echo "Count2=$COUNT2"
+          echo "Count3=$COUNT3"
+
+          if [ "$COUNT1" = "$COUNT2" ] && [ "$COUNT1" = "$COUNT3" ]; then
+            echo "OK - Counts match"
+          else
+            echo "KO - Counts do not match"
+            exit 1
+          fi
