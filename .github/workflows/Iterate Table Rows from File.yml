@@ -1,7 +1,16 @@
 name: Iterate Table Rows from File
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      file_to_process:
+        description: 'Select the file to process'
+        type: choice
+        required: true
+        options:
+          - counts.txt
+          - table1.txt
+          - table2.txt
 
 jobs:
   generate:
@@ -26,6 +35,6 @@ jobs:
             fi
 
             PREV="$COUNT"
-          done < counts.txt
+          done < ${{ inputs.file_to_process }}
 
           echo "OK, all counts match"
