@@ -29,7 +29,7 @@ jobs:
             LINE_NUM=$((LINE_NUM + 1))
             echo "Line $LINE_NUM: $COUNT"
             
-            if [ "$PREV" ] && [ "$COUNT" != "$PREV" ]; then
+            if [ -n "$PREV" ] && [ "$COUNT" != "$PREV" ]; then
               echo "KO - Line $LINE_NUM ($COUNT) does not match previous line ($PREV)"
               exit 1
             fi
