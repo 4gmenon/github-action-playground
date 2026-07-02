@@ -13,19 +13,21 @@ jobs:
       - name: Iterate counts
         working-directory: ${{ github.workspace }}
         run: |
-          PREV=""
-          LINE_NUM=0
+          PREV = ""
+          LINE_NUM = 0
 
           while read -r COUNT; do
-            LINE_NUM=$((LINE_NUM + 1))
+            LINE_NUM = $((LINE_NUM + 1))
             echo "Line $LINE_NUM: $COUNT"
 
+            [ -z "$COUNT" ] && continue
+            
             if [ -n "$PREV" ] && [ "$COUNT" != "$PREV" ]; then
               echo "KO - Line $LINE_NUM ($COUNT) does not match previous line ($PREV)"
               exit 1
             fi
 
-            PREV="$COUNT"
+            PREV = "$COUNT"
           done < counts.txt
 
-          echo "OK - All counts match"
+          echo "OK, all counts match"
