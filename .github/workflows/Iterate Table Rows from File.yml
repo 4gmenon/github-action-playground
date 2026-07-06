@@ -31,7 +31,7 @@ jobs:
             
             if [ -n "$PREV" ] && [ "$COUNT" != "$PREV" ]; then
               echo "KO - Line $LINE_NUM ($COUNT) does not match previous line ($PREV)"
-              exit 0
+              exit 1
             fi
 
             PREV="$COUNT"
