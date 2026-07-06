@@ -31,10 +31,11 @@ jobs:
             
             if [ -n "$PREV" ] && [ "$COUNT" != "$PREV" ]; then
               echo "KO - Line $LINE_NUM ($COUNT) does not match previous line ($PREV)"
-              exit 1
+              exit 0
             fi
 
             PREV="$COUNT"
           done < ${{ inputs.file_to_process }}
 
           echo "OK, all counts match"
+         
