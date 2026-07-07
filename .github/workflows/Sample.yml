@@ -27,6 +27,7 @@ jobs:
 
             [ -z "$TABLE" ] && continue
 
+            echo "Checking table: $TABLE"
            
             QUERY="SELECT COUNT(*) AS COUNT_ROWS FROM $TABLE"
             echo "$QUERY"
