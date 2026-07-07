@@ -39,7 +39,7 @@ jobs:
             echo "Row Count = $CNT"
 
             if [ -n "$PREV_CNT" ] && [ "$CNT" != "$PREV_CNT" ]; then
-              echo "KO - Table $TABLE has a different row count."
+              echo "KO - Table $TABLE has a different number of records."
               echo "Previous Count: $PREV_CNT"
               echo "Current Count : $CNT"
               exit 1
