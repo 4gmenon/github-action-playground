@@ -8,7 +8,7 @@ on:
         type: choice
         required: true
         options:
-          - counts.txt
+          - DEV.txt
           - table1.txt
           - table2.txt
    
