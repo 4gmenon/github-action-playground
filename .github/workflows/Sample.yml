@@ -1,0 +1,41 @@
+name: Sample
+
+on:
+  workflow_dispatch:
+   
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compare table row counts
+        run: |
+          PREV_CNT=""
+
+          while read -r TABLE || ["$TABLE" ]; do
+
+            [ -z "$TABLE" ] && continue
+
+            echo "Checking table: $TABLE"
+
+            QUERY="SELECT COUNT(*) AS COUNT_ROWS FROM $TABLE"
+            echo "$QUERY"
+
+            CNT=100
+
+            echo "Row Count = $CNT"
+
+            if [ -n "$PREV_CNT" ] && [ "$CNT" != "$PREV_CNT" ]; then
+              echo "KO - Table $TABLE has a different row count."
+              echo "Previous Count: $PREV_CNT"
+              echo "Current Count : $CNT"
+              exit 1
+            fi
+
+            PREV_CNT="$CNT"
+
+          done < table1.txt
+
+          echo "OK - All tables have matching row counts."
