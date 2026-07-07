@@ -9,8 +9,7 @@ on:
         required: true
         options:
           - DEV.txt
-          - table1.txt
-          - table2.txt
+         
    
 jobs:
   validate:
