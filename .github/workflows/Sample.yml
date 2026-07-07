@@ -2,6 +2,15 @@ name: Sample
 
 on:
   workflow_dispatch:
+   inputs:
+      file_to_process:
+        description: 'Select the file to process'
+        type: choice
+        required: true
+        options:
+          - counts.txt
+          - table1.txt
+          - table2.txt
    
 jobs:
   validate:
@@ -18,11 +27,12 @@ jobs:
 
             [ -z "$TABLE" ] && continue
 
-            echo "Checking table: $TABLE"
-
+           
             QUERY="SELECT COUNT(*) AS COUNT_ROWS FROM $TABLE"
             echo "$QUERY"
 
+            # run the query at some point and store the result in variable CNT
+            
             CNT=100
 
             echo "Row Count = $CNT"
@@ -36,6 +46,6 @@ jobs:
 
             PREV_CNT="$CNT"
 
-          done < table1.txt
+          done < ${{ inputs.file_to_process }}
 
           echo "OK - All tables have matching row counts."
