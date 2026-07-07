@@ -1,4 +1,4 @@
-name: Sample
+name: Table Row Counts Final
 
 on:
   workflow_dispatch:
