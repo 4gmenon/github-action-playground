@@ -1,0 +1,4 @@
+amp-dp-ame-dev.adp_dlh_data_ritm0705215.STG_DMM__FT_APPOINTMENT_TT
+amp-dp-ame-dev.adp_dlh_data_ritm0705215.STG_DMM__FT_APPOINTMENT_2_TT
+amp-dp-ame-dev.adp_dlh_data_ritm0705215.STG_DMM__TMP_MAP_BDL_FT_APPOINTMENT_S0010_T0100
+
